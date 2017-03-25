@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<smc_cfg>
+	<system>
+		<!-- 消息流量,每秒25条短信 -->
+		<gwinvaltime>10</gwinvaltime>
+		<groupsender>false</groupsender>
+		<messagelength>70</messagelength>
+		<SmsProtocol>2</SmsProtocol>
+		<period>30</period>
+		<sendersleep>60</sendersleep>
+		<emailsendersleep>60</emailsendersleep>
+		<email_forbid>false</email_forbid>
+		<!-- 单位毫秒 -->
+		<emaildirectory>F:/smc1.1/email/</emaildirectory>
+		<version>
+			<edition>1.0</edition>
+			<releaseTime>2011-10-27 12:5:00</releaseTime>
+		</version>
+	</system>
+	<!-- <db>
+		<name>SMC_DB_POOL</name>
+		<dbpooltype>1</dbpooltype>
+		<type>javax.sql.DataSource</type>
+		<driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>
+		<url>jdbc:oracle:thin:@192.168.15.223:1521:ora10</url>
+		<service>DataCollect180</service>
+		<user>noapjs</user>
+		<password>uwaysoft2009</password>
+		<maxActive>10</maxActive>
+		<maxIdle>5</maxIdle>
+		<maxWait>10000</maxWait>
+		<validationQuery>select sysdate from dual</validationQuery>
+	</db> -->
+	
+	<db>
+		<name>SMC_DB_POOL</name>
+		<dbpooltype>1</dbpooltype>
+		<type>javax.sql.DataSource</type>
+		<driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>
+		<url>jdbc:oracle:thin:@192.168.15.199:1521:ora11</url>
+		<service>DataCollect180</service>
+		<user>noap</user>
+		<password>uwaysoft2009</password>
+		<maxActive>10</maxActive>
+		<maxIdle>5</maxIdle>
+		<maxWait>10000</maxWait>
+		<validationQuery>select sysdate from dual</validationQuery>
+	</db>
+
+	<other>
+		<province_config>jstel_config.properties</province_config>
+		<is_used>0</is_used>
+	</other>
+	<module>
+		<!-- Web模块 -->
+		<web enable="on">
+			<charset>UTF-8</charset>
+			<port>8081</port>
+			<loglevel>INFO</loglevel>
+		</web>
+	</module>
+	<smctest>
+		<!-- 手机短信测试号码，多个号码之间用分号(;)分割 ，，， 如果是部署到电信省份，需要填写电信号码 -->
+		<phone>8618620374081; 8618620374082</phone>
+		<!-- 邮件地址 -->
+		<email>liuwx@uway.cn</email>
+		<!-- 消息源编号，前端应用系统对应一个消息源编号 -->
+		<src_id>1</src_id>
+		
+		<!-- send_time 发送时间， 时间格式YYYY-MM-DD HH:mm:SS-->
+		<send_time></send_time>
+		<!-- 消息级别 -->
+		<level>1</level>
+		<!--1: 短信 2： 邮件 -->
+		<sendWay>1</sendWay>
+		<!--发送內容 -->
+		<content>test sms 22 </content>
+		
+		<invalid_mobile_numbers>
+		   <invalid_mobile_number>13800000000</invalid_mobile_number>
+		   <invalid_mobile_number></invalid_mobile_number>
+		</invalid_mobile_numbers>
+	</smctest>
+</smc_cfg>

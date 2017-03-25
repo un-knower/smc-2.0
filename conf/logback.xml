@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<configuration>  
+  	
+  	<appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender"> 
+  
+  		<file>log/out.log</file>  
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter"> 
+            <level>DEBUG</level> 
+        </filter> 
+  
+        <!-- 可让每天产生一个日志文件，最多60个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> 
+            <fileNamePattern>log/out-%d{yyyy-MM-dd}.log</fileNamePattern> 
+            <maxHistory>10</maxHistory> 
+        </rollingPolicy> 
+  
+        <encoder> 
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern> 
+        </encoder> 
+    </appender>
+  
+  
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">  
+		<layout class="ch.qos.logback.classic.PatternLayout">  
+			<pattern>%-20(%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread]) %-5level - %msg%n</pattern>  
+		</layout>  
+	</appender>  
+	<!--
+			<logger name="communication" level="DEBUG" />  
+			<logger name="system" level="DEBUG" /> 
+			<logger name="web" level="DEBUG" /> 
+		  -->
+	
+		
+	<logger name="org.apache.axis.description.OperationDesc" level="INFO" />   
+	<logger name="org.apache.axis.*" level="info" />   
+
+	<root level="DEBUG">  
+		<appender-ref ref="RollingFile" />   
+		<!--<appender-ref ref="console" /> -->  
+	</root>  
+</configuration>  
